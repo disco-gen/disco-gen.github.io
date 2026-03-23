@@ -26,6 +26,79 @@
     opacity: 1 !important;
     filter: alpha(opacity=100) !important; /* For older IE support if needed by the base template */
   }
+  /* Academic-style tables */
+  table.academic {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 12px;
+    font-family: "Computer Modern", "Latin Modern", Georgia, serif;
+    margin: 0 auto 8px auto;
+  }
+  table.academic thead tr:first-child th {
+    border-top: 2.5px solid #000;
+  }
+  table.academic thead tr:last-child th {
+    border-bottom: 1.5px solid #000;
+  }
+  table.academic tbody tr:last-child td {
+    border-bottom: 2.5px solid #000;
+  }
+  table.academic tfoot tr:last-child td {
+    border-bottom: 2.5px solid #000;
+  }
+  table.academic tfoot tr:first-child td {
+    border-top: 1px solid #000;
+  }
+  table.academic th, table.academic td {
+    border: none;
+    padding: 3px 6px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  table.academic th {
+    font-weight: bold;
+    background: none;
+  }
+  table.academic td.left, table.academic th.left {
+    text-align: left;
+    white-space: nowrap;
+    font-weight: bold;
+  }
+  table.academic .ci {
+    font-size: 11px;
+    color: #333;
+  }
+  .academic-caption {
+    text-align: center;
+    font-size: 13px;
+    margin-bottom: 6px;
+    color: #222;
+  }
+  /* Code snippet styling for counts_config */
+  .code-snippet {
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px 14px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    counter-reset: line;
+  }
+  .code-snippet .line::before {
+    content: counter(line);
+    counter-increment: line;
+    color: #999;
+    display: inline-block;
+    width: 18px;
+    margin-right: 8px;
+    text-align: right;
+    font-size: 11px;
+  }
+  .code-snippet .kw { color: #000; }
+  .code-snippet .str { color: #8B008B; }
+  .code-snippet .val { color: #000; }
 </style>
 <script>
   window.MathJax = {
@@ -147,8 +220,49 @@
 
 
 <div class="figure">
-<p><img src="imgs/scores.png" alt="scores.png" class="img-responsive" style="width: 100%;" />
-</p>
+<div style="overflow-x: auto;">
+<table class="academic">
+  <thead>
+    <tr>
+      <th class="left" rowspan="2">Model</th>
+      <th colspan="3"><em>DiscoBench Single</em></th>
+      <th colspan="3"><em>DiscoBench Single (Until Success)</em></th>
+      <th colspan="3"><em>DiscoBench All</em></th>
+    </tr>
+    <tr>
+      <th>Succ.</th><th>Meta-Train</th><th>Meta-Test</th>
+      <th>Succ.</th><th>Meta-Train</th><th>Meta-Test</th>
+      <th>Succ.</th><th>Meta-Train</th><th>Meta-Test</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="left">Baseline (All Fixed)</td>
+      <td>&#8212;</td><td><strong>1104</strong> <span class="ci">[1077, 1136]</span></td><td><strong>1177</strong> <span class="ci">[1144, 1211]</span></td>
+      <td>&#8212;</td><td><strong>1076</strong> <span class="ci">[1038, 1108]</span></td><td><strong>1149</strong> <span class="ci">[1113, 1184]</span></td>
+      <td>&#8212;</td><td><strong>1409</strong> <span class="ci">[1297, 1682]</span></td><td><strong>1377</strong> <span class="ci">[1212, 1595]</span></td>
+    </tr>
+    <tr>
+      <td class="left">GPT-OSS 120B</td>
+      <td>68.2%</td><td>931 <span class="ci">[900, 961]</span></td><td>962 <span class="ci">[933, 993]</span></td>
+      <td><strong>100.0%</strong></td><td>888 <span class="ci">[853, 914]</span></td><td>901 <span class="ci">[871, 929]</span></td>
+      <td>11.4%</td><td>533 <span class="ci">[&minus;183, 700]</span></td><td>597 <span class="ci">[&minus;106, 799]</span></td>
+    </tr>
+    <tr>
+      <td class="left">Devstral2</td>
+      <td>45.9%</td><td>886 <span class="ci">[850, 922]</span></td><td>808 <span class="ci">[771, 842]</span></td>
+      <td><strong>100.0%</strong></td><td>1000 <span class="ci">[966, 1029]</span></td><td>964 <span class="ci">[930, 991]</span></td>
+      <td><strong>34.3%</strong></td><td>873 <span class="ci">[751, 1138]</span></td><td><strong>1087</strong> <span class="ci">[971, 1322]</span></td>
+    </tr>
+    <tr>
+      <td class="left">Deepseek-v3.2</td>
+      <td><strong>80.0%</strong></td><td><strong>1079</strong> <span class="ci">[1050, 1108]</span></td><td>1053 <span class="ci">[1020, 1082]</span></td>
+      <td><strong>100.0%</strong></td><td><strong>1037</strong> <span class="ci">[1004, 1067]</span></td><td>987 <span class="ci">[960, 1011]</span></td>
+      <td>25.7%</td><td><strong>1184</strong> <span class="ci">[1069, 1397]</span></td><td>940 <span class="ci">[831, 1176]</span></td>
+    </tr>
+  </tbody>
+</table>
+</div>
 </div>
     <p>We introduce DiscoGen, a procedural generator of algorithm discovery tasks for automated machine learning research. Unlike benchmarks for automated algorithm discovery, which are static sets of tasks designed for <i>evaluating</i> agents, DiscoGen can generate <b>billions</b> of unique algorithm discovery tasks for <i>optimising</i> agents.</p>
 
@@ -171,13 +285,55 @@
 
 <h3>What is DiscoGen?</h3>
 <div class="figure">
-<p><img src="imgs/counts_config.png" alt="Domain Counts" class="img-responsive" style="width: 100%;" />
-</p>
+<div style="display: flex; gap: 32px; align-items: center; flex-wrap: wrap;">
+  <div style="flex: 1; min-width: 340px;">
+    <table class="academic">
+      <thead>
+        <tr>
+          <th class="left">Task Domain</th>
+          <th>\(m\)</th><th>\(d\)</th><th>\(b\)</th><th>\(N_{\text{tasks}}\)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="left">Bayesian Optimisation</td><td>6</td><td>11</td><td>1</td><td>65,413,656</td></tr>
+        <tr><td class="left">Brain Speech Detection</td><td>3</td><td>7</td><td>1</td><td>81,144</td></tr>
+        <tr><td class="left">Computer Vision Classification</td><td>4</td><td>9</td><td>1</td><td>1,679,400</td></tr>
+        <tr><td class="left">Continual Learning</td><td>5</td><td>3</td><td>3</td><td>6,696</td></tr>
+        <tr><td class="left">Greenhouse Gas Prediction</td><td>2</td><td>4</td><td>1</td><td>900</td></tr>
+        <tr><td class="left">Language Modelling</td><td>3</td><td>4</td><td>2</td><td>4,200</td></tr>
+        <tr><td class="left">Model Unlearning</td><td>1</td><td>3</td><td>1</td><td>85,176</td></tr>
+        <tr><td class="left">Neural Cellular Automata</td><td>5</td><td>5</td><td>1</td><td>33,480</td></tr>
+        <tr><td class="left">Off-Policy RL</td><td>7</td><td>4</td><td>1</td><td>38,100</td></tr>
+        <tr><td class="left">Offline RL</td><td>5</td><td>10</td><td>1</td><td>10,602,372</td></tr>
+        <tr><td class="left">On-Policy MARL</td><td>6</td><td>17</td><td>2</td><td>97,431,783,120</td></tr>
+        <tr><td class="left">On-Policy RL</td><td>6</td><td>13</td><td>3</td><td>1,789,383,960</td></tr>
+        <tr><td class="left">Trajectory Prediction</td><td>4</td><td>3</td><td>3</td><td>1,080</td></tr>
+        <tr><td class="left">Unsupervised Environment Design</td><td>3</td><td>4</td><td>1</td><td>2,100</td></tr>
+      </tbody>
+      <tfoot>
+        <tr><td class="left">Total</td><td></td><td></td><td></td><td>99,299,115,384</td></tr>
+        <tr><td class="left">Median</td><td></td><td></td><td></td><td>59,622</td></tr>
+      </tfoot>
+    </table>
+  </div>
+  <div style="flex: 1; min-width: 280px;">
+    <div class="code-snippet">
+      <div class="line"><span class="kw">task_domain</span> = <span class="str">"OnPolicyRL"</span></div>
+      <div class="line"><span class="kw">meta_train</span> = [<span class="str">"Breakout"</span>, <span class="str">"Freeway"</span>]</div>
+      <div class="line"><span class="kw">meta_test</span> = [<span class="str">"Asterix"</span>, <span class="str">"SpaceInvaders"</span>]</div>
+      <div class="line"><span class="kw">backend</span> = <span class="str">"recurrent"</span></div>
+      <div class="line"><span class="kw">change_optim</span> = <span class="val">False</span></div>
+      <div class="line"><span class="kw">change_loss</span> = <span class="val">True</span></div>
+      <div class="line"><span class="kw">change_networks</span> = <span class="val">True</span></div>
+      <div class="line"><span class="kw">change_train</span> = <span class="val">False</span></div>
+      <div class="line"><span class="kw">eval_type</span> = <span class="str">"performance"</span></div>
+      <div class="line"><span class="kw">initialisation</span> = <span class="str">"empty"</span></div>
+    </div>
+  </div>
+</div>
 </div>
 <p> 
-DiscoGen is <b>not</b> a benchmark; whereas existing suites of algorithm discovery tasks are static and manually designed, DiscoGen is a procedural generator which is able to generate <i>billions</i> of unique algorithm discovery tasks. DiscoGen currently supports 14 different domains.</p>
-
-<p>Tasks in DiscoGen are modular. Rather than asking an ADA to solve an entire problem end-to-end, we ask it to discover one or more specific components of an algorithm, such as the <i>loss function</i> or <i>optimiser</i>.</p>
+DiscoGen is <b>not</b> a benchmark; whereas existing suites of algorithm discovery tasks are static and manually designed, DiscoGen is a procedural generator which is able to generate <i>billions</i> of unique algorithm discovery tasks. DiscoGen currently supports 14 different domains. Tasks in DiscoGen are modular. Rather than asking an ADA to solve an entire problem end-to-end, we ask it to discover one or more specific components of an algorithm, such as the <i>loss function</i> or <i>optimiser</i>.</p>
 
 <p>
 Like in many procedurally generated settings, each DiscoGen task is defined by a small number of parameters:
@@ -194,9 +350,24 @@ Like in many procedurally generated settings, each DiscoGen task is defined by a
 </p>
 
 <h3>The Advantages of DiscoGen</h3>
-<div style="display: flex; gap: 16px; align-items: center;">
-  <img src="imgs/correlation.png" alt="Correlation Heatmap" class="img-responsive" style="max-width: 50%;" />
-  <img src="imgs/combinations.png" alt="Combination Scores" class="img-responsive" style="max-width: 40%;" />
+<div style="display: flex; gap: 32px; align-items: center; flex-wrap: wrap;">
+  <img src="imgs/correlation.png" alt="Correlation Heatmap" style="width: 55%; min-width: 280px; flex-shrink: 0;" />
+  <div style="flex: 1; min-width: 260px; display: flex; align-items: center;">
+    <table class="academic" style="width: auto;">
+      <thead>
+        <tr>
+          <th class="left" rowspan="2">Model</th>
+          <th colspan="4">Success Rate (%) by Editable Modules</th>
+        </tr>
+        <tr><th>1</th><th>2</th><th>3</th><th>4</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="left">Deepseek-v3.2</td><td>75.0</td><td>47.2</td><td>8.3</td><td>0.0</td></tr>
+        <tr><td class="left">GPT-OSS-120b</td><td>50.0</td><td>11.1</td><td>8.3</td><td>0.0</td></tr>
+        <tr><td class="left">Devstral2</td><td>29.2</td><td>27.8</td><td>0.0</td><td>0.0</td></tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <p>The principled task design and procedural generation of DiscoGen opens up a lot of benefits over existing task suites for algorithm discovery.</p>
@@ -212,8 +383,23 @@ Like in many procedurally generated settings, each DiscoGen task is defined by a
 
 
 <div class="figure">
-<p><img src="imgs/meta-meta.png" alt="Meta-Meta Learning Results" class="img-responsive" style="width: 50%;" />
-</p>
+<div style="overflow-x: auto;">
+<table class="academic" style="max-width: 480px; margin: 0 auto;">
+  <thead>
+    <tr>
+      <th class="left" rowspan="2">\(K_{\text{tasks}}\)</th>
+      <th colspan="3"><em>DiscoBench Combined</em></th>
+    </tr>
+    <tr><th>Succ.</th><th>Meta-Train</th><th>Meta-Test</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="left">1</td><td>70.6%</td><td>956 <span class="ci">[939, 978]</span></td><td>957 <span class="ci">[927, 977]</span></td></tr>
+    <tr><td class="left">5</td><td>75.3%</td><td>1014 <span class="ci">[1000, 1033]</span></td><td>973 <span class="ci">[947, 993]</span></td></tr>
+    <tr><td class="left">10</td><td>72.0%</td><td>969 <span class="ci">[949, 989]</span></td><td>1000 <span class="ci">[980, 1022]</span></td></tr>
+    <tr><td class="left">30</td><td>78.7%</td><td><strong>1061</strong> <span class="ci">[1040, 1079]</span></td><td><strong>1071</strong> <span class="ci">[1049, 1096]</span></td></tr>
+  </tbody>
+</table>
+</div>
 </div>
 <p>A central goal of DiscoGen is to enable meta-meta-learning: optimising agents to become better at discovering machine learning algorithms. We explore how automated prompt optimisation can improve the capabilities of algorithm discovery agents.</p>
 
