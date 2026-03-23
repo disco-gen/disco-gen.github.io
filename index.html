@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DiscoGen: Procedural Generation of Algorithm Discovery Tasks in Machine Learning</title>
+<meta name="description" content="Procedural Generation of Algorithm Discovery Tasks in Machine Learning" />
+<script src="https://kit.fontawesome.com/1eb1a53221.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="./style.css"/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪩</text></svg>">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+<link rel="stylesheet" type="text/css" href="utils/style.css"/>
+<link rel="stylesheet" type="text/css" href="utils/bootstrap.min.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+<script src="utils/app.js"></script>
+<style type="text/css">
+  /* Override any fade effect on hover for img-responsive class defined in external stylesheets */
+  .img-responsive:hover {
+    opacity: 1 !important;
+    filter: alpha(opacity=100) !important; /* For older IE support if needed by the base template */
+  }
+</style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+ 
+<div id="main" class="container">
+ 
+<p>
+<div class="row"><h2 class="col-md-12 text-center"><strong><font size="+4r">  DiscoGen: Procedural Generation of Algorithm Discovery Tasks in Machine Learning  </font></strong></h2></div><br />
+</p>
+ 
+ 
+<div class="row"> <div class="col-md-12 text-center">
+<ul class="list-inline">
+<li>Alexander D. Goldie <sup>*</sup><br /></li>
+<li>Zilin Wang <sup>&dagger;</sup><br /></li>
+<li>Adrian Hayler <sup>&dagger;</sup><br /></li>
+<li>Deepak Nathani <sup>&dagger;</sup><br /></li>
+<li>Edan Toledo <sup>&dagger;</sup><br /></li>
+<li>Ken Thampiratwong <sup>&dagger;</sup><br /></li>
+<li>Aleksandra Kalisz <sup>&dagger;</sup><br /></li>
+<li>Michael Beukman <sup>&Dagger;</sup><br /></li>
+<li>Alistair Letcher <sup>&Dagger;</sup><br /></li>
+<li>Shashank Reddy <sup>&Dagger;</sup><br /></li>
+<li>Clarisse Wibault <sup>&Dagger;</sup><br /></li>
+<li>Theo Wolf <sup>&Dagger;</sup><br /></li>
+<li>Charles O'Neill <sup>&Dagger;</sup><br /></li>
+<li>Uljad Berdica <sup>&Dagger;</sup><br /></li>
+<li>Nicholas Roberts <sup>&Dagger;</sup><br /></li>
+<li>Saeed Rahmani <sup>&Dagger;</sup><br /></li>
+<li>Hannah Erlebach <sup>&Dagger;</sup><br /></li>
+<li>Roberta Raileanu <sup>&sect;</sup><br /></li>
+<li>Shimon Whiteson <sup>&sect;</sup><br /></li>
+<li>Jakob N. Foerster <sup>&sect;</sup><br /></li>
+</ul>
+</div> </div>
+
+<div class="row"> <div class="col-md-12 text-center" style="font-size: 13px; color: #777; margin-bottom: 10px;">
+<sup>*</sup>Lead Author &ensp;
+<sup>&dagger;</sup>Core Contributor &ensp;
+<sup>&Dagger;</sup>Task Contributor &ensp;
+<sup>&sect;</sup>Equal Supervision
+</div> </div>
+ 
+ 
+<div class="row"> <div class="col-md-12 text-center">
+<ul class="list-inline">
+<li><img src="imgs/oxford_logo.png" height="60px" alt="University of Oxford Logo"><br /></li>
+<li><img src="imgs/ucsb_logo.png" height="60px" alt="UC Santa Barbara Logo"><br /></li>
+<li><img src="imgs/ucl_logo.png" height="60px" alt="UCL Logo"><br /></li>
+<li><img src="imgs/wisconsin_madison_logo.png" height="60px" alt="University of Wisconsin-Madison Logo"><br /></li>
+<li><img src="imgs/delft_logo.png" height="60px" alt="TU Delft Logo"><br /></li>
+</ul>
+</div> </div>
+ 
+<div class="row"> 
+  <div class="col-md-12 text-center contact-line">
+    Correspondence to: Alexander D. Goldie &lt;goldie@robots.ox.ac.uk&gt;
+  </div>
+</div>
+ 
+<div class="row"> <div class="col-md-4 col-md-offset-4 text-center">
+<ul class="nav nav-pills nav-justified">
+<li><a href="https://arxiv.org/pdf/2603.17863"><img src="imgs/arxiv.png" height="60px" alt="arXiv Logo"><h4><strong>Paper</strong></h4></a><br /></li>
+<li><a href="https://github.com/AlexGoldie/discobench"><img src="imgs/GitHub-Mark.png" height="60px" alt="GitHub Logo"><h4><strong>Code</strong></h4></a><br /></li>
+</ul>
+</div> </div>
+
+<div class="row"> <div class="col-md-10 col-md-offset-1">
+<div class="outline-1">
+<h2 ></h2>
+<div class="outline-text-2">
+
+<div class="figure">
+<p><img src="imgs/main_figure.png" alt="DiscoGen Diagram" class="img-responsive" style="width: 100%;" /><br />
+</p>
+</div>
+
+</div>
+
+
+<h3>Abstract</h3>
+
+<p>Automating the development of machine learning algorithms has the potential to unlock new breakthroughs. However, our ability to <i>improve</i> and <i>evaluate</i> algorithm discovery systems has thus far been limited by existing task suites. They suffer from many issues, such as: poor evaluation methodologies; data contamination; and containing saturated or very similar problems. Here, we introduce <i>DiscoGen</i>, a procedural generator of algorithm discovery tasks for machine learning, such as developing optimisers for reinforcement learning or loss functions for image classification. Motivated by the success of procedural generation in reinforcement learning, DiscoGen spans millions of tasks of varying difficulty and complexity from a range of machine learning fields. These tasks are specified by a small number of configuration parameters and can be used to optimise algorithm discovery agents (ADAs). We present <i>DiscoBench</i>, a benchmark consisting of a fixed, small subset of DiscoGen tasks for principled evaluation of ADAs. Finally, we propose a number of ambitious, impactful research directions enabled by DiscoGen, in addition to experiments demonstrating its use for prompt optimisation of an ADA. </p>
+
+
+<h3>Overview</h3>
+
+
+<div class="figure">
+<p><img src="imgs/scores.png" alt="scores.png" class="img-responsive" style="width: 100%;" />
+</p>
+</div>
+    <p>We introduce DiscoGen, a procedural generator of algorithm discovery tasks for automated machine learning research. Unlike benchmarks for automated algorithm discovery, which are static sets of tasks designed for <i>evaluating</i> agents, DiscoGen can generate <b>billions</b> of unique algorithm discovery tasks for <i>optimising</i> agents.</p>
+
+    <p>
+      DiscoGen is used in an <i>ADA Optimisation Loop</i>. When an ADA discovers machine learning algorithms in a <i>meta-loop</i>, the ADA Optimisation Loop effectively becomes meta-meta-learning. At each ADA optimisation step, DiscoGen can be queried for fresh algorithm discovery tasks, each specifying the ML domain, the algorithm components to be discovered, the algorithm evaluation objective, and the datasets available for experimentation.
+    </p>
+
+  
+    <p>
+      To enable better and more principled evaluation of ADAs, we also introduce DiscoBench, a benchmark of tasks within the support of the DiscoGen generator. All evaluation experiments in our paper use DiscoBench. A key finding: current models consistently struggle to outperform standard baseline implementations across domains.
+    </p>
+
+<p>Throughout this page we highlight the core ideas behind DiscoGen. For a more complete understanding, please refer to:</p>
+  <ul><li>Our <a href="https://arxiv.org/pdf/2603.17863">paper</a>, which includes significantly more detail about DiscoGen, additional experiments, and a number of interesting research ideas enabled by DiscoGen.</li>
+  <li>The <a href="https://github.com/AlexGoldie/discogen">DiscoGen library</a>, to explore how DiscoGen is implemented and what domains are currently supported.</li>
+  <li>Our <a href="https://alexgoldie.github.io/discogen">comprehensive documentation</a>, which describes getting started, contributing to DiscoGen, and how to integrate DiscoGen into an ADA optimisation system.</li>
+  </ul>
+
+<p>You can install the package with <code>pip install discogen</code> to try out the DiscoGen CLI or API.</p>
+
+<h3>What is DiscoGen?</h3>
+<div class="figure">
+<p><img src="imgs/counts_config.png" alt="Domain Counts" class="img-responsive" style="width: 100%;" />
+</p>
+</div>
+<p> 
+DiscoGen is <b>not</b> a benchmark; whereas existing suites of algorithm discovery tasks are static and manually designed, DiscoGen is a procedural generator which is able to generate <i>billions</i> of unique algorithm discovery tasks. DiscoGen currently supports 14 different domains.</p>
+
+<p>Tasks in DiscoGen are modular. Rather than asking an ADA to solve an entire problem end-to-end, we ask it to discover one or more specific components of an algorithm, such as the <i>loss function</i> or <i>optimiser</i>.</p>
+
+<p>
+Like in many procedurally generated settings, each DiscoGen task is defined by a small number of parameters:
+<ul>
+<li><b>Task Domain</b>: What field of machine learning the task pertains to. Examples currently implemented include On-Policy Reinforcement Learning or Image Classification.</li>
+<li><b>Editable Modules</b>: Which components of the algorithm the ADA should discover. At least one <i>must</i> be true, so the agent has something to discover!</li>
+<li><b>Meta-Train Datasets</b>: A list of datasets which an ADA is allowed to experiment with. These are the datasets which a discovered algorithm is refined on. This will also establish the initial codebase.</li>
+<li><b>Meta-Test Datasets</b>: A list of datasets, which are completely held out from the ADA, which a discovered algorithm is evaluated on.</li>
+<li><b>Evaluation Type</b>: The objective for the agent. We support three different types of evaluation: maximising the <i>performance</i> of the algorithm; minimising the <i>energy</i> used by the algorithm while hitting a performance threshold; or minimising the time taken by the algorithm while hitting a performance threshold.</li>
+<li><b>Initialisation</b>: What the agent is given to start with; either a standard baseline implementation for each editable module, or an empty file which simply defines the inputs and outputs for the agent. If editable modules call each other, the agent can change this!</li>
+<li><b>[Optional] Backend</b>: For some task domains, we support different <i>backends</i>, which provide minor changes to the initial codebase.</li>
+</ul>
+
+</p>
+
+<h3>The Advantages of DiscoGen</h3>
+<div style="display: flex; gap: 16px; align-items: center;">
+  <img src="imgs/correlation.png" alt="Correlation Heatmap" class="img-responsive" style="max-width: 50%;" />
+  <img src="imgs/combinations.png" alt="Combination Scores" class="img-responsive" style="max-width: 40%;" />
+</div>
+
+<p>The principled task design and procedural generation of DiscoGen opens up a lot of benefits over existing task suites for algorithm discovery.</p>
+
+<ul>
+<li><b>Enough Tasks for Learning</b>: Existing task suites are typically very small (on the order of tens of tasks). Instead, DiscoGen supports <i>billions</i> of tasks, providing a practically unlimited source of unique algorithm discovery problems to learn from. Such scale should unlock the ability to train generalist research agents.</li>
+<li><b>Meta-Train/Meta-Test Split</b>: A principled separation between algorithm discovery (meta-train) and algorithm evaluation (meta-test) means we are assessing <b>algorithms</b> on their ability to generalise. Overfitting to a dataset is still overfitting! The graphic above illustrates this: we cluster a rank correlation heatmap across a range of DiscoBench tasks based on <i>meta-train</i> performance, and observe how the structure breaks down at meta-test; algorithms that performed well during discovery do not necessarily generalise.</li>
+<li><b>Range of Difficulties</b>: By parameterising tasks for generation, as above, it is easy to control their difficulty. Tasks can be made harder or easier by using different datasets, expanding the number of meta-train datasets, making more modules editable, or changing how files are initialisation. We find that adding more modules <i>lowers</i> the success rate but <i>raises</i> the maximum achieved score over independent runs; the table above show this across all module combinations for the <i>On-Policy RL</i> domain.
+</li>
+</ul>
+
+<h3>Learning to Discover Learning Algorithms</h3>
+
+
+<div class="figure">
+<p><img src="imgs/meta-meta.png" alt="Meta-Meta Learning Results" class="img-responsive" style="width: 50%;" />
+</p>
+</div>
+<p>A central goal of DiscoGen is to enable meta-meta-learning: optimising agents to become better at discovering machine learning algorithms. We explore how automated prompt optimisation can improve the capabilities of algorithm discovery agents.</p>
+
+<p>Our meta-meta-loop uses an LLM to propose new prompts for the discovery agent, based on prior performance. Each prompt is optimised over 30 steps. We sweep the number of randomly sampled DiscoGen tasks used during optimisation from 1 (the same task for all 30 steps) to 30 (a new task at every step).</p>
+
+<p>The results lead to two key findings. Firstly, using fewer tasks leads to overfitting: prompts discovered on small numbers of tasks were closely tied to the seen tasks rather than capturing general discovery strategies. Secondly, meta-test performance improves monotonically with the number of distinct tasks experienced. Clearly, the more tasks that are seen in meta-meta-training, the better the discovered algorithms in held-out tasks.</p>
+
+<h3>Next Steps</h3>
+
+<p>There is a <b>lot</b> of new research we can explore with DiscoGen. In the paper we provide a large set of suggested research directions; we have been thinking about <i>algorithm world models</i>, <i>curriculum learning</i> and <i>better tree search</i> for algorithm discovery agents, for a few. Be sure to check out <a href="https://arxiv.org/pdf/2603.17863">the paper</a> for more details and ideas!</p>
+
+<p>DiscoGen also thrives on open-source contributions. Please check out our <a href="https://alexgoldie.github.io/discogen/how_to/overview/">contributing documentation</a> to learn about adding new domains, modules or datasets to DiscoGen.</p>
+
+<h3>Citation</h3>
+<div class="form-group col-md-10 col-md-offset-1">
+  <textarea id="bibtex" class="form-control" readonly>@misc{goldie2026proceduralgenerationalgorithmdiscovery,
+  title={Procedural Generation of Algorithm Discovery Tasks in Machine Learning},
+  author={Alexander D. Goldie and Zilin Wang and Adrian Hayler and Deepak Nathani and Edan Toledo and Ken Thampiratwong and Aleksandra Kalisz and Michael Beukman and Alistair Letcher and Shashank Reddy and Clarisse Wibault and Theo Wolf and Charles O'Neill and Uljad Berdica and Nicholas Roberts and Saeed Rahmani and Hannah Erlebach and Roberta Raileanu and Shimon Whiteson and Jakob N. Foerster},
+  year={2026},
+  eprint={2603.17863},
+  archivePrefix={arXiv},
+  primaryClass={cs.LG},
+  url={https://arxiv.org/abs/2603.17863},
+}</textarea>
+</div>
+
+<div class="row"><div class="col-md-8 col-md-offset-2"><p class="text-justify">
+<br><br>
+The website template was borrowed from <a href="http://easyacademicwebsite.github.io">Easy Academic Website Template</a> and <a href="http://jonbarron.info/">Jon Barron</a>.
+</p>
+</div>
+</div>
+</div>
+
+
+</div>
+</div></div>
+</body>
+</html>
